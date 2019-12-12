@@ -13,11 +13,7 @@ class Line {
   }
 
   isEqualTo(otherLine) {
-    const isStartEqual =
-      this.start.x === otherLine.start.x && this.start.y === otherLine.start.y;
-    const isEndEqual =
-      this.end.x === otherLine.end.x && this.end.y === otherLine.end.y;
-    return isStartEqual && isEndEqual;
+    return this.toString() === otherLine.toString();
   }
 }
 
