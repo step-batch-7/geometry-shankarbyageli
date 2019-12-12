@@ -19,7 +19,7 @@ describe("isEqualTo", function() {
 
   it("should determine if two lines are not equal", function() {
     const line = new Line(1, 1, 3, 2);
-    const actual = line.isEqualTo(new Line(1, 1, 2, 2));
+    const actual = line.isEqualTo(new Line(3, 1, 2, 2));
     assert.strictEqual(actual, false);
   });
 });
