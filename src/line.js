@@ -1,3 +1,7 @@
+const arePointsEqual = function(pointA, pointB) {
+  return pointA.x === pointB.x && pointA.y === pointB.y;
+};
+
 class Line {
   start = {};
   end = {};
@@ -13,7 +17,9 @@ class Line {
   }
 
   isEqualTo(otherLine) {
-    return this.toString() === otherLine.toString();
+    const isStartEqual = arePointsEqual(this.start, otherLine.start);
+    const isEndEqual = arePointsEqual(this.end, otherLine.end);
+    return isStartEqual && isEndEqual;
   }
 }
 
