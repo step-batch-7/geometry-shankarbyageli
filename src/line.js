@@ -22,7 +22,7 @@ class Line {
     return (
       otherLine instanceof Line &&
       arePointsEqual(this.start, otherLine.start) &&
-      arePointsEqual(this.end, this.end)
+      arePointsEqual(this.end, otherLine.end)
     );
   }
 }
