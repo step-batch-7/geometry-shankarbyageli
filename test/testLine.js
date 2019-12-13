@@ -41,7 +41,7 @@ describe("Line", function() {
     });
   });
 
-  describe("#getLength", function() {
+  describe("#length", function() {
     it("should give length of the line with positive coordinates", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
       const actual = line.length;
