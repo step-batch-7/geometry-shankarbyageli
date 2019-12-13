@@ -88,9 +88,11 @@ describe("Line", function() {
       assert.isNotOk(actual);
     });
 
-    it("should invalidate if both lines have same coordinates", function() {
+    it("should validate if both lines have same coordinates", function() {
       const line = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
       const other = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
+      const actual = line.isParallelTo(other);
+      assert.isOk(actual);
     });
   });
 
