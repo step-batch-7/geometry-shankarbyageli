@@ -66,4 +66,12 @@ describe("Line", function() {
       assert.approximately(actual, 3.16, 0.05);
     });
   });
+
+  describe("#slope", function() {
+    it("should give slope of line with positive coordinates", function() {
+      const line = new Line({ x: 1, y: 4 }, { x: 3, y: 1 });
+      const actual = line.slope;
+      assert.strictEqual(actual, -1.5);
+    });
+  });
 });

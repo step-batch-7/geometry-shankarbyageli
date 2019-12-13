@@ -19,6 +19,12 @@ class Line {
     return length;
   }
 
+  get slope() {
+    const y = this.end.y - this.start.y;
+    const x = this.end.x - this.start.x;
+    return y / x;
+  }
+
   isEqualTo(other) {
     if (this === other) return true;
     return (
