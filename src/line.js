@@ -13,8 +13,8 @@ class Line {
   }
 
   get length() {
-    const x = Math.abs(this.start.x - this.end.x);
-    const y = Math.abs(this.start.y - this.end.y);
+    const x = this.start.x - this.end.x;
+    const y = this.start.y - this.end.y;
     const length = Math.sqrt(x ** 2 + y ** 2);
     return length;
   }
