@@ -59,5 +59,11 @@ describe("Line", function() {
       const actual = line.length;
       assert.strictEqual(actual, 0);
     });
+
+    it("should give length of line with decimal point coordinates", function() {
+      const line = new Line({ x: 5, y: 4 }, { x: 2, y: 3 });
+      const actual = line.length;
+      assert.approximately(actual, 3.16, 0.05);
+    });
   });
 });
