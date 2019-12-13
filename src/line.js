@@ -19,9 +19,11 @@ class Line {
   }
 
   isEqualTo(otherLine) {
-    const isStartEqual = arePointsEqual(this.start, otherLine.start);
-    const isEndEqual = arePointsEqual(this.end, otherLine.end);
-    return otherLine instanceof Line && isStartEqual && isEndEqual;
+    return (
+      otherLine instanceof Line &&
+      arePointsEqual(this.start, otherLine.start) &&
+      arePointsEqual(this.end, this.end)
+    );
   }
 }
 
