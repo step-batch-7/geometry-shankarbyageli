@@ -40,4 +40,24 @@ describe("Line", function() {
       assert.isNotOk(actual);
     });
   });
+
+  describe("#getLength", function() {
+    it("should give length of the line with positive coordinates", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
+      const actual = line.length;
+      assert.strictEqual(actual, 4);
+    });
+
+    it("should give length of the line with negative coordinates", function() {
+      const line = new Line({ x: -3, y: -3 }, { x: 0, y: -3 });
+      const actual = line.length;
+      assert.strictEqual(actual, 3);
+    });
+
+    it("should give length zero for line with same end points", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+      const actual = line.length;
+      assert.strictEqual(actual, 0);
+    });
+  });
 });

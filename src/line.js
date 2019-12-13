@@ -12,6 +12,17 @@ class Line {
     return `Line (${this.start.x},${this.start.y}) (${this.end.x},${this.end.y})`;
   }
 
+  getLength() {
+    const x = Math.abs(this.start.x - this.end.x);
+    const y = Math.abs(this.start.y - this.end.y);
+    const length = Math.sqrt(x ** 2 + y ** 2);
+    return length;
+  }
+
+  get length() {
+    return this.getLength();
+  }
+
   isEqualTo(other) {
     if (this === other) return true;
     return (
