@@ -27,7 +27,7 @@ describe("Line", function() {
     it("should validate if same line is given", function() {
       const line = new Line({ x: 3, y: 3 }, { x: 6, y: 7 });
       const actual = line.isEqualTo(line);
-      assert.ok(actual);
+      assert.isOk(actual);
     });
 
     it("should invalidate if other given line is not a Line object", function() {
@@ -67,11 +67,51 @@ describe("Line", function() {
     });
   });
 
+  describe("#isParallelTo", function() {
+    it("should determine if two lines are parallel", function() {
+      const line = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
+      const other = new Line({ x: 3, y: 6 }, { x: 0, y: 6 });
+      const actual = line.isParallelTo(other);
+      assert.isOk(actual);
+    });
+
+    it("should invalidate if two lines are not parallel", function() {
+      const line = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
+      const other = new Line({ x: 3, y: 0 }, { x: 5, y: 6 });
+      const actual = line.isParallelTo(other);
+      assert.isNotOk(actual);
+    });
+
+    it("should validate if given lines are same", function() {
+      const line = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
+      const actual = line.isParallelTo(line);
+      assert.isOk(actual);
+    });
+  });
+
   describe("#slope", function() {
     it("should give slope of line with positive coordinates", function() {
       const line = new Line({ x: 1, y: 4 }, { x: 3, y: 1 });
       const actual = line.slope;
       assert.strictEqual(actual, -1.5);
+    });
+
+    it("should give slope of line with negative coordinates", function() {
+      const line = new Line({ x: -2, y: 3 }, { x: 0, y: -1 });
+      const actual = line.slope;
+      assert.strictEqual(actual, -2);
+    });
+
+    it("should give slope of line with zero difference between x coordinates", function() {
+      const line = new Line({ x: 3, y: 2 }, { x: 3, y: 5 });
+      const actual = line.slope;
+      assert.strictEqual(actual, Infinity);
+    });
+
+    it("should give slope of line with zero difference between y coordinates", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 5, y: 2 });
+      const actual = line.slope;
+      assert.strictEqual(actual, 0);
     });
   });
 });

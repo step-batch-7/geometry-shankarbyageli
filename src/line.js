@@ -19,6 +19,11 @@ class Line {
     return length;
   }
 
+  isParallelTo(other) {
+    if (this === other) return true;
+    return other instanceof Line && this.slope === other.slope;
+  }
+
   get slope() {
     const y = this.end.y - this.start.y;
     const x = this.end.x - this.start.x;
