@@ -121,4 +121,12 @@ describe("Line", function() {
       assert.strictEqual(actual, 0);
     });
   });
+
+  describe("#findX", function() {
+    it("should give X coordinate of given Y of horizontal line", function() {
+      const line = new Line({ x: 4, y: 6 }, { x: 4, y: 2 });
+      const actual = line.findX(5);
+      assert.strictEqual(actual, 4);
+    });
+  });
 });

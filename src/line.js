@@ -9,7 +9,7 @@ class Line {
   }
 
   toString() {
-    return `[Line (${this.start.x},${this.start.y}) to (${this.end.x},${this.end.y})`;
+    return `[Line (${this.start.x},${this.start.y}) to (${this.end.x},${this.end.y})]`;
   }
 
   get length() {
@@ -36,6 +36,11 @@ class Line {
       arePointsEqual(this.start, other.start) &&
       arePointsEqual(this.end, other.end)
     );
+  }
+
+  findX(b) {
+    const y = this.start.y - b;
+    return this.start.x - y / this.slope;
   }
 }
 
