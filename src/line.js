@@ -38,14 +38,24 @@ class Line {
     );
   }
 
-  findX(b) {
+  findX(y) {
     let [startY, endY] = [this.start.y, this.end.y].sort();
-    if (b >= startY && b <= endY) {
-      const y = this.start.y - b;
-      const x = this.start.x - y / this.slope;
-      return x;
+    if (y < startY || y > endY) {
+      return NaN;
     }
-    return NaN;
+    if (startY === endY) return this.start.x;
+    const dy = this.start.y - y;
+    return this.start.x - dy / this.slope;
+  }
+
+  findY(x) {
+    let [startX, endX] = [this.start.x, this.end.x].sort();
+    if (x < startX || x > endX) {
+      return NaN;
+    }
+    if (startX === endX) return this.start.y;
+    const dx = this.start.x - x;
+    return this.start.y - this.slope * dx;
   }
 }
 

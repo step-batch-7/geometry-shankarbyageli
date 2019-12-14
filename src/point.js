@@ -1,6 +1,6 @@
 class Point {
-  constructor(coords) {
-    (this.x = coords.x), (this.y = coords.y);
+  constructor(x, y) {
+    (this.x = x), (this.y = y);
   }
 
   toString() {
