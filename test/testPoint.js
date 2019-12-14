@@ -29,4 +29,27 @@ describe("Point", function() {
       assert.strictEqual(actual, 20);
     });
   });
+
+  describe("#isEqualTo", function() {
+    it("should validate if given point has same coordinates and of Point instance", function() {
+      const p1 = new Point(3, 5);
+      const p2 = new Point(3, 5);
+      const actual = p1.isEqualTo(p2);
+      assert.isOk(actual);
+    });
+
+    it("should invalidate if given object has same coordinates but not of Point instance", function() {
+      const p1 = new Point(3, 5);
+      const p2 = { x: 3, y: 5 };
+      const actual = p1.isEqualTo(p2);
+      assert.isNotOk(actual);
+    });
+
+    it("should invalidate if given object has different coordinates", function() {
+      const p1 = new Point(3, 5);
+      const p2 = new Point(3, 6);
+      const actual = p1.isEqualTo(p2);
+      assert.isNotOk(actual);
+    });
+  });
 });
