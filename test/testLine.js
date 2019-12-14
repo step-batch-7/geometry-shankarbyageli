@@ -6,7 +6,7 @@ describe("Line", function() {
     it("should give the string representation of line object", function() {
       const line = new Line({ x: 3, y: 4 }, { x: 6, y: 7 });
       const actual = line.toString();
-      const expected = "Line (3,4) (6,7)";
+      const expected = "[Line (3,4) to (6,7)]";
       assert.strictEqual(actual, expected);
     });
   });
@@ -88,11 +88,11 @@ describe("Line", function() {
       assert.isNotOk(actual);
     });
 
-    it("should validate if both lines have same coordinates", function() {
+    it("should invalidate if both lines have same coordinates", function() {
       const line = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
       const other = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
       const actual = line.isParallelTo(other);
-      assert.isOk(actual);
+      assert.isNotOk(actual);
     });
   });
 
@@ -115,7 +115,7 @@ describe("Line", function() {
       assert.strictEqual(actual, Infinity);
     });
 
-    it("should give slope of horizontal line as 0", function() {
+    it("should give slope of horizonal line as 0", function() {
       const line = new Line({ x: 2, y: 2 }, { x: 5, y: 2 });
       const actual = line.slope;
       assert.strictEqual(actual, 0);
