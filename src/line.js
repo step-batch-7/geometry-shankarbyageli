@@ -39,8 +39,13 @@ class Line {
   }
 
   findX(b) {
-    const y = this.start.y - b;
-    return this.start.x - y / this.slope;
+    let [startY, endY] = [this.start.y, this.end.y].sort();
+    if (b >= startY && b <= endY) {
+      const y = this.start.y - b;
+      const x = this.start.x - y / this.slope;
+      return x;
+    }
+    return NaN;
   }
 }
 

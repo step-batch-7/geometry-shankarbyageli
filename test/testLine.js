@@ -125,8 +125,14 @@ describe("Line", function() {
   describe("#findX", function() {
     it("should give X coordinate of given Y of horizontal line", function() {
       const line = new Line({ x: 4, y: 6 }, { x: 4, y: 2 });
-      const actual = line.findX(5);
+      const actual = line.findX(3);
       assert.strictEqual(actual, 4);
+    });
+
+    it("should give NaN for given Y which is not on line", function() {
+      const line = new Line({ x: 4, y: 6 }, { x: 4, y: 2 });
+      const actual = line.findX(10);
+      assert.isNaN(actual);
     });
   });
 });
