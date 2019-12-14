@@ -15,8 +15,7 @@ class Line {
   get length() {
     const x = this.start.x - this.end.x;
     const y = this.start.y - this.end.y;
-    const length = Math.sqrt(x ** 2 + y ** 2);
-    return length;
+    return Math.sqrt(x ** 2 + y ** 2);
   }
 
   isParallelTo(other) {
@@ -25,9 +24,9 @@ class Line {
   }
 
   get slope() {
-    const y = this.end.y - this.start.y;
-    const x = this.end.x - this.start.x;
-    return y / x;
+    const dy = this.end.y - this.start.y;
+    const dx = this.end.x - this.start.x;
+    return dy / dx;
   }
 
   isEqualTo(other) {

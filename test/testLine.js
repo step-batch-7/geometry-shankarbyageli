@@ -68,7 +68,7 @@ describe("Line", function() {
   });
 
   describe("#isParallelTo", function() {
-    it("should determine if two lines are parallel", function() {
+    it("should validate if two lines are parallel", function() {
       const line = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
       const other = new Line({ x: 3, y: 6 }, { x: 0, y: 6 });
       const actual = line.isParallelTo(other);
@@ -82,7 +82,7 @@ describe("Line", function() {
       assert.isNotOk(actual);
     });
 
-    it("should invalidate if same line are same", function() {
+    it("should invalidate if both lines are same", function() {
       const line = new Line({ x: 1, y: 3 }, { x: 4, y: 3 });
       const actual = line.isParallelTo(line);
       assert.isNotOk(actual);
@@ -109,13 +109,13 @@ describe("Line", function() {
       assert.strictEqual(actual, -2);
     });
 
-    it("should give slope of line with zero difference between x coordinates", function() {
+    it("should give slope of vertical line as Infinfity", function() {
       const line = new Line({ x: 3, y: 2 }, { x: 3, y: 5 });
       const actual = line.slope;
       assert.strictEqual(actual, Infinity);
     });
 
-    it("should give slope of line with zero difference between y coordinates", function() {
+    it("should give slope of horizontal line as 0", function() {
       const line = new Line({ x: 2, y: 2 }, { x: 5, y: 2 });
       const actual = line.slope;
       assert.strictEqual(actual, 0);
