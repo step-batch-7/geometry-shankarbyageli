@@ -1,5 +1,12 @@
+const Point = require("./point");
+
 const arePointsEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
+};
+
+const isNumberInRange = function(range, number) {
+  [min, max] = range.sort();
+  return number >= min && number <= max;
 };
 
 class Line {
@@ -64,6 +71,16 @@ class Line {
       y: (this.start.y + this.end.y) / 2
     };
     return [new Line(this.start, midPoint), new Line(midPoint, this.end)];
+  }
+
+  hasPoint(object) {
+    if (!object instanceof Point) return false;
+    const isPointCoordsInRange =
+      isNumberInRange([this.start.x, this.end.x], object.x) &&
+      isNumberInRange([this.start.y, this.end.y], object.y);
+    const slope = this.slope;
+    const yIntercept = this.start.y - slope * this.start.x;
+    return isPointCoordsInRange && object.y === slope * object.x + yIntercept;
   }
 }
 

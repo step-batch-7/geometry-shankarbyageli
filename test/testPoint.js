@@ -52,4 +52,13 @@ describe("Point", function() {
       assert.isNotOk(actual);
     });
   });
+
+  describe("#clone", function() {
+    it("should give the copy of point", function() {
+      const point = new Point(4, 5);
+      const actual = point.clone();
+      assert.deepStrictEqual(point, actual);
+      assert.isOk(actual instanceof Point);
+    });
+  });
 });
