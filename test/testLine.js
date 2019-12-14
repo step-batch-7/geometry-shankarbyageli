@@ -161,4 +161,33 @@ describe("Line", function() {
       assert.isNaN(actual);
     });
   });
+
+  describe("#split", function() {
+    it("should return two equal lines of horizontal line", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 9, y: 1 });
+      const firstLine = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
+      const secondLine = new Line({ x: 5, y: 1 }, { x: 9, y: 1 });
+      const actual = line.split();
+      assert.isOk(actual[0].isEqualTo(firstLine));
+      assert.isOk(actual[1].isEqualTo(secondLine));
+    });
+
+    it("should return two equal lines of vertical line", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 1, y: 6 });
+      const firstLine = new Line({ x: 1, y: 1 }, { x: 1, y: 3.5 });
+      const secondLine = new Line({ x: 1, y: 3.5 }, { x: 1, y: 6 });
+      const actual = line.split();
+      assert.isOk(actual[0].isEqualTo(firstLine));
+      assert.isOk(actual[1].isEqualTo(secondLine));
+    });
+
+    it("should return two equal lines of line with negative coordinates", function() {
+      const line = new Line({ x: -4, y: 3 }, { x: 6, y: 8 });
+      const firstLine = new Line({ x: -4, y: 3 }, { x: 1, y: 5.5 });
+      const secondLine = new Line({ x: 1, y: 5.5 }, { x: 6, y: 8 });
+      const actual = line.split();
+      assert.isOk(actual[0].isEqualTo(firstLine));
+      assert.isOk(actual[1].isEqualTo(secondLine));
+    });
+  });
 });
