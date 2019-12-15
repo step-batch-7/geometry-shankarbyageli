@@ -95,6 +95,20 @@ describe("Line", function() {
       const actual = line.isParallelTo(other);
       assert.isNotOk(actual);
     });
+
+    it("should invalidate if two lines have same slope but are collinear", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 5, y: 2 });
+      const other = new Line({ x: 7, y: 2 }, { x: 12, y: 2 });
+      const actual = line.isParallelTo(other);
+      assert.isNotOk(actual);
+    });
+
+    it("should invalidate if two lines overlap each other", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 7, y: 2 });
+      const other = new Line({ x: 5, y: 2 }, { x: 8, y: 2 });
+      const actual = line.isParallelTo(other);
+      assert.isNotOk(actual);
+    });
   });
 
   describe("#slope", function() {
