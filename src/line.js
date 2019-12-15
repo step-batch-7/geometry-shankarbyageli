@@ -26,7 +26,9 @@ class Line {
   }
 
   isParallelTo(other) {
-    if (this === other || this.isEqualTo(other)) return false;
+    if (!other instanceof Line || this === other || this.isEqualTo(other))
+      return false;
+    if (this.hasPoint(other.start) || other.hasPoint(this.start)) return false;
     return other instanceof Line && this.slope === other.slope;
   }
 
@@ -46,21 +48,15 @@ class Line {
   }
 
   findX(y) {
-    let [startY, endY] = [this.start.y, this.end.y].sort();
-    if (y < startY || y > endY) {
-      return NaN;
-    }
-    if (startY === endY) return this.start.x;
+    if (!isNumberInRange([this.start.y, this.end.y], y)) return NaN;
+    if (this.start.y === this.end.y) return this.start.x;
     const dy = this.start.y - y;
     return this.start.x - dy / this.slope;
   }
 
   findY(x) {
-    let [startX, endX] = [this.start.x, this.end.x].sort();
-    if (x < startX || x > endX) {
-      return NaN;
-    }
-    if (startX === endX) return this.start.y;
+    if (!isNumberInRange([this.start.x, this.end.x], x)) return NaN;
+    if (this.start.x === this.end.x) return this.start.y;
     const dx = this.start.x - x;
     return this.start.y - this.slope * dx;
   }
@@ -73,14 +69,11 @@ class Line {
     return [new Line(this.start, midPoint), new Line(midPoint, this.end)];
   }
 
-  hasPoint(object) {
-    if (!object instanceof Point) return false;
-    const isPointCoordsInRange =
-      isNumberInRange([this.start.x, this.end.x], object.x) &&
-      isNumberInRange([this.start.y, this.end.y], object.y);
-    const slope = this.slope;
-    const yIntercept = this.start.y - slope * this.start.x;
-    return isPointCoordsInRange && object.y === slope * object.x + yIntercept;
+  hasPoint(point) {
+    return (
+      point instanceof Point &&
+      (point.x === this.findX(point.y) || point.y === this.findY(point.x))
+    );
   }
 }
 

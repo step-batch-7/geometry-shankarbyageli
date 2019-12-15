@@ -201,7 +201,7 @@ describe("Line", function() {
 
     it("should invalidate if point doesn't exist on line", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 8, y: 8 });
-      const actual = line.hasPoint(new Point(3, 4));
+      const actual = line.hasPoint(new Point(4, 2));
       assert.isNotOk(actual);
     });
   });
