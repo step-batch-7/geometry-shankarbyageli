@@ -226,7 +226,8 @@ describe("Line", function() {
       const distance = 3;
       const actual = line.findPointFromStart(distance);
       const expected = new Point(5, 1);
-      assert.isOk(actual.isEqualTo(expected));
+      assert.approximately(actual.x, expected.x, 0.0001);
+      assert.approximately(actual.y, expected.y, 0.0001);
     });
 
     it("should give null if a distance is more than line length", function() {
@@ -248,17 +249,20 @@ describe("Line", function() {
       const distance = 0;
       const actual = line.findPointFromStart(distance);
       const expected = new Point(8, 1);
-      assert.isOk(actual.isEqualTo(expected));
+      assert.approximately(actual.x, expected.x, 0.0001);
+      assert.approximately(actual.y, expected.y, 0.0001);
     });
   });
 
   describe("#findPointFromEnd", function() {
     it("should give point at distance from end point", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 8, y: 1 });
-      const distance = 4;
+      const distance = 3;
       const actual = line.findPointFromEnd(distance);
-      const expected = new Point(4, 1);
-      assert.isOk(actual.isEqualTo(expected));
+      console.log(actual);
+      const expected = new Point(5, 1);
+      assert.approximately(actual.x, expected.x, 0.0001);
+      assert.approximately(actual.y, expected.y, 0.0001);
     });
 
     it("should give null if a distance is more than line length", function() {
@@ -280,7 +284,8 @@ describe("Line", function() {
       const distance = 0;
       const actual = line.findPointFromEnd(distance);
       const expected = new Point(1, 1);
-      assert.isOk(actual.isEqualTo(expected));
+      assert.approximately(actual.x, expected.x, 0.0001);
+      assert.approximately(actual.y, expected.y, 0.0001);
     });
   });
 });
