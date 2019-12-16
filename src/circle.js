@@ -1,13 +1,8 @@
-const arePointsEqual = function(pointA, pointB) {
-  return pointA.x === pointB.x && pointA.y === pointB.y;
-};
+const { Point } = require("./point");
 
 class Circle {
   constructor(center, radius) {
-    this.center = {
-      x: center.x,
-      y: center.y
-    };
+    this.center = new Point(center.x, center.y);
     this.radius = radius;
   }
 
@@ -19,9 +14,12 @@ class Circle {
     if (!(other instanceof Circle)) return false;
     return (
       this === other ||
-      (arePointsEqual(this.center, other.center) &&
-        this.radius === other.radius)
+      (this.center.isEqualTo(other.center) && this.radius === other.radius)
     );
+  }
+
+  area() {
+    return Math.PI * this.radius * this.radius;
   }
 }
 

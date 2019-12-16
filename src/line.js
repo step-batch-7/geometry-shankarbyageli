@@ -1,9 +1,5 @@
 const { Point } = require("./point");
 
-const arePointsEqual = function(pointA, pointB) {
-  return pointA.x === pointB.x && pointA.y === pointB.y;
-};
-
 const isNumberInRange = function(range, number) {
   [min, max] = range.sort();
   return number >= min && number <= max;
@@ -18,8 +14,8 @@ const arePointsCollinear = function(pointA, pointB, pointC) {
 
 class Line {
   constructor(start, end) {
-    this.start = { x: start.x, y: start.y };
-    this.end = { x: end.x, y: end.y };
+    this.start = new Point(start.x, start.y);
+    this.end = new Point(end.x, end.y);
   }
 
   toString() {
@@ -52,8 +48,8 @@ class Line {
     if (this === other) return true;
     return (
       other instanceof Line &&
-      arePointsEqual(this.start, other.start) &&
-      arePointsEqual(this.end, other.end)
+      this.start.isEqualTo(other.start) &&
+      this.end.isEqualTo(other.end)
     );
   }
 

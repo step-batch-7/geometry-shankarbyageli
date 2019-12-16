@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const { Circle } = require("../src/circle");
+const { Point } = require("../src/point");
 
 describe("Circle", function() {
   describe("#toString", function() {
@@ -45,6 +46,14 @@ describe("Circle", function() {
       const other = { center: { x: 3, y: 2 }, radius: 5 };
       const actual = circle.isEqualTo(other);
       assert.isNotOk(actual);
+    });
+  });
+
+  describe("#area", function() {
+    it("should give area of circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const actual = circle.area();
+      assert.approximately(actual, 78.5, 0.05);
     });
   });
 });
