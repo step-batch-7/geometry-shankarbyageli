@@ -52,7 +52,7 @@ describe("Circle", function() {
   describe("#area", function() {
     it("should give area of circle", function() {
       const circle = new Circle({ x: 0, y: 0 }, 5);
-      const actual = circle.area();
+      const actual = circle.area;
       assert.approximately(actual, 78.5, 0.05);
     });
   });
