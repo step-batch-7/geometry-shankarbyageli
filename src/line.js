@@ -33,8 +33,12 @@ class Line {
   }
 
   isParallelTo(other) {
-    if (!(other instanceof Line) || this === other) return false;
-    if (arePointsCollinear(this.start, this.end, other.start)) return false;
+    if (
+      !(other instanceof Line) ||
+      this === other ||
+      arePointsCollinear(this.start, this.end, other.start)
+    )
+      return false;
     return this.slope === other.slope;
   }
 
@@ -83,7 +87,8 @@ class Line {
   }
 
   findPointFromStart(distance) {
-    if (distance > this.length || distance < 0) return null;
+    if (distance > this.length || distance < 0 || !Number.isInteger(distance))
+      return null;
     const ratio = distance / this.length;
     const [x, y] = [
       (1 - ratio) * this.start.x + ratio * this.end.x,

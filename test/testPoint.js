@@ -91,4 +91,20 @@ describe("Point", function() {
       assert.approximately(actual, 8.94, 0.05);
     });
   });
+
+  describe("#isOn", function() {
+    it("should validate if point is on given horizontal line", function() {
+      const point = new Point(1, 1);
+      const line = new Line({ x: 0, y: 1 }, { x: 6, y: 1 });
+      const actual = point.isOn(line);
+      assert.isOk(actual);
+    });
+
+    it("should invalidate if point is not on line", function() {
+      const point = new Point(1, 1);
+      const line = new Line({ x: 3, y: 2 }, { x: 6, y: 6 });
+      const actual = point.isOn(line);
+      assert.isNotOk(actual);
+    });
+  });
 });

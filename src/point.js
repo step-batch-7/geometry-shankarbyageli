@@ -1,5 +1,3 @@
-const { Line } = require("./line");
-
 class Point {
   constructor(x, y) {
     (this.x = x), (this.y = y);
@@ -28,6 +26,10 @@ class Point {
     const x = other.x - this.x;
     const y = other.y - this.y;
     return Math.sqrt(x ** 2 + y ** 2);
+  }
+
+  isOn(line) {
+    return line.hasPoint(this);
   }
 }
 
