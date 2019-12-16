@@ -28,8 +28,8 @@ class Point {
     return Math.sqrt(x ** 2 + y ** 2);
   }
 
-  isOn(line) {
-    return line.hasPoint(this);
+  isOn(shape) {
+    return shape.hasPoint(this);
   }
 }
 
