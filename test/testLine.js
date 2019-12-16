@@ -222,18 +222,65 @@ describe("Line", function() {
 
   describe("#findPointFromStart", function() {
     it("should give point at distance from start point", function() {
-      const line = new Line({ x: 1, y: 1 }, { x: 8, y: 1 });
+      const line = new Line({ x: 8, y: 1 }, { x: 1, y: 1 });
       const distance = 3;
       const actual = line.findPointFromStart(distance);
-      const expected = new Point(4, 1);
+      const expected = new Point(5, 1);
       assert.isOk(actual.isEqualTo(expected));
     });
 
-    it("should give NaN if a distance is more than line length", function() {
+    it("should give null if a distance is more than line length", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
       const distance = 7;
       const actual = line.findPointFromStart(distance);
       assert.isNull(actual);
+    });
+
+    it("should give null if distance is negative", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
+      const distance = -2;
+      const actual = line.findPointFromStart(distance);
+      assert.isNull(actual);
+    });
+
+    it("should give start point of line if distance is 0", function() {
+      const line = new Line({ x: 8, y: 1 }, { x: 1, y: 1 });
+      const distance = 0;
+      const actual = line.findPointFromStart(distance);
+      const expected = new Point(8, 1);
+      assert.isOk(actual.isEqualTo(expected));
+    });
+  });
+
+  describe("#findPointFromEnd", function() {
+    it("should give point at distance from end point", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 8, y: 1 });
+      const distance = 4;
+      const actual = line.findPointFromEnd(distance);
+      const expected = new Point(4, 1);
+      assert.isOk(actual.isEqualTo(expected));
+    });
+
+    it("should give null if a distance is more than line length", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
+      const distance = 7;
+      const actual = line.findPointFromEnd(distance);
+      assert.isNull(actual);
+    });
+
+    it("should give null if distance is negative", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
+      const distance = -2;
+      const actual = line.findPointFromEnd(distance);
+      assert.isNull(actual);
+    });
+
+    it("should give end point of line if distance is 0", function() {
+      const line = new Line({ x: 8, y: 1 }, { x: 1, y: 1 });
+      const distance = 0;
+      const actual = line.findPointFromEnd(distance);
+      const expected = new Point(1, 1);
+      assert.isOk(actual.isEqualTo(expected));
     });
   });
 });

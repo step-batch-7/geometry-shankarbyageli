@@ -47,11 +47,9 @@ class Line {
   isEqualTo(other) {
     if (this === other) return true;
     return (
-      (other instanceof Line &&
-        arePointsEqual(this.start, other.start) &&
-        arePointsEqual(this.end, other.end)) ||
-      (arePointsEqual(this.start, other.end) &&
-        arePointsEqual(this.end, other.start))
+      other instanceof Line &&
+      arePointsEqual(this.start, other.start) &&
+      arePointsEqual(this.end, other.end)
     );
   }
 
@@ -85,13 +83,17 @@ class Line {
   }
 
   findPointFromStart(distance) {
-    if (distance > this.length) return null;
+    if (distance > this.length || distance < 0) return null;
     const ratio = distance / this.length;
     const [x, y] = [
       (1 - ratio) * this.start.x + ratio * this.end.x,
       (1 - ratio) * this.start.y + ratio * this.end.y
     ];
     return new Point(x, y);
+  }
+
+  findPointFromEnd(distance) {
+    return new Line(this.end, this.start).findPointFromStart(distance);
   }
 }
 
