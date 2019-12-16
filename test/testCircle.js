@@ -56,4 +56,12 @@ describe("Circle", function() {
       assert.approximately(actual, 78.5, 0.05);
     });
   });
+
+  describe("#perimeter", function() {
+    it("should give perimeter of the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const actual = circle.perimeter;
+      assert.approximately(actual, 44, 0.05);
+    });
+  });
 });

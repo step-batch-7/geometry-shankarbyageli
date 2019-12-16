@@ -23,9 +23,7 @@ class Line {
   }
 
   get length() {
-    const x = this.start.x - this.end.x;
-    const y = this.start.y - this.end.y;
-    return Math.sqrt(x ** 2 + y ** 2);
+    return this.start.findDistanceTo(this.end);
   }
 
   isParallelTo(other) {

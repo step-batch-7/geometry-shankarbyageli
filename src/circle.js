@@ -22,7 +22,9 @@ class Circle {
     return Math.PI * this.radius * this.radius;
   }
 
-  perimeter() {}
+  get perimeter() {
+    return 2 * Math.PI * this.radius;
+  }
 }
 
 module.exports = { Circle };
