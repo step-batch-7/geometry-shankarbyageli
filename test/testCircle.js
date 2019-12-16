@@ -64,4 +64,27 @@ describe("Circle", function() {
       assert.approximately(actual, 44, 0.05);
     });
   });
+
+  describe("#hasPoint", function() {
+    it("should validate if given point is on the circumference of the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(0, 5);
+      const actual = circle.hasPoint(point);
+      assert.isOk(actual);
+    });
+
+    it("should invalidate if given point is inside the circumference", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(0, 3);
+      const actual = circle.hasPoint(point);
+      assert.isNotOk(actual);
+    });
+
+    it("should invalidate if given point is outside the circumference", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(0, 6);
+      const actual = circle.hasPoint(point);
+      assert.isNotOk(actual);
+    });
+  });
 });

@@ -40,6 +40,13 @@ describe("Line", function() {
       const actual = line.isEqualTo(otherLine);
       assert.isNotOk(actual);
     });
+
+    it("should validate if other line has opposite ends with same coordinates", function() {
+      const line = new Line({ x: 3, y: 3 }, { x: 6, y: 7 });
+      const other = new Line({ x: 6, y: 7 }, { x: 3, y: 3 });
+      const actual = line.isEqualTo(other);
+      assert.isNotOk(actual);
+    });
   });
 
   describe("#length", function() {

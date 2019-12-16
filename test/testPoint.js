@@ -93,7 +93,7 @@ describe("Point", function() {
   });
 
   describe("#isOn", function() {
-    it("should validate if point is on given horizontal line", function() {
+    it("should validate if point is on given line", function() {
       const point = new Point(1, 1);
       const line = new Line({ x: 0, y: 1 }, { x: 6, y: 1 });
       const actual = point.isOn(line);
