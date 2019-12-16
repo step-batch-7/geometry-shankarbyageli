@@ -9,7 +9,7 @@ const isNumberInRange = function(range, number) {
   return number >= min && number <= max;
 };
 
-const areCollinear = function(pointA, pointB, pointC) {
+const arePointsCollinear = function(pointA, pointB, pointC) {
   return (
     (pointB.y - pointA.y) * (pointC.x - pointB.x) ===
     (pointC.y - pointB.y) * (pointB.x - pointA.x)
@@ -34,7 +34,7 @@ class Line {
 
   isParallelTo(other) {
     if (!(other instanceof Line) || this === other) return false;
-    if (areCollinear(this.start, this.end, other.start)) return false;
+    if (arePointsCollinear(this.start, this.end, other.start)) return false;
     return this.slope === other.slope;
   }
 
@@ -47,9 +47,11 @@ class Line {
   isEqualTo(other) {
     if (this === other) return true;
     return (
-      other instanceof Line &&
-      arePointsEqual(this.start, other.start) &&
-      arePointsEqual(this.end, other.end)
+      (other instanceof Line &&
+        arePointsEqual(this.start, other.start) &&
+        arePointsEqual(this.end, other.end)) ||
+      (arePointsEqual(this.start, other.end) &&
+        arePointsEqual(this.end, other.start))
     );
   }
 

@@ -61,4 +61,33 @@ describe("Point", function() {
       assert.isOk(actual instanceof Point);
     });
   });
+
+  describe("#findDistanceTo", function() {
+    it("should give distance of point from origin point", function() {
+      const pointA = new Point(3, 4);
+      const pointB = new Point(0, 0);
+      const actual = pointA.findDistanceTo(pointB);
+      assert.strictEqual(actual, 5);
+    });
+
+    it("should give distance as 0 if same point is given", function() {
+      const pointA = new Point(3, 4);
+      const actual = pointA.findDistanceTo(pointA);
+      assert.strictEqual(actual, 0);
+    });
+
+    it("should give NaN if non-point object with same coordinates is given", function() {
+      const pointA = new Point(3, 4);
+      const pointB = { x: 3, y: 4 };
+      const actual = pointA.findDistanceTo(pointB);
+      assert.isNaN(actual);
+    });
+
+    it("should give distance of point with negative coordinates", function() {
+      const pointA = new Point(3, 4);
+      const pointB = new Point(-1, -4);
+      const actual = pointA.findDistanceTo(pointB);
+      assert.approximately(actual, 8.94, 0.05);
+    });
+  });
 });
