@@ -1,4 +1,4 @@
-const Point = require("./point");
+const { Point } = require("./point");
 
 const arePointsEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
@@ -83,6 +83,16 @@ class Line {
       (point.x === this.findX(point.y) || point.y === this.findY(point.x))
     );
   }
+
+  findPointFromStart(distance) {
+    if (distance > this.length) return null;
+    const ratio = distance / this.length;
+    const [x, y] = [
+      (1 - ratio) * this.start.x + ratio * this.end.x,
+      (1 - ratio) * this.start.y + ratio * this.end.y
+    ];
+    return new Point(x, y);
+  }
 }
 
-module.exports = Line;
+module.exports = { Line };

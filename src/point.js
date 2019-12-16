@@ -1,3 +1,5 @@
+const { Line } = require("./line");
+
 class Point {
   constructor(x, y) {
     (this.x = x), (this.y = y);
@@ -22,10 +24,11 @@ class Point {
 
   findDistanceTo(other) {
     if (!(other instanceof Point)) return NaN;
+    if (other === this && this.isEqualTo(other)) return 0;
     const x = other.x - this.x;
     const y = other.y - this.y;
     return Math.sqrt(x ** 2 + y ** 2);
   }
 }
 
-module.exports = Point;
+module.exports = { Point };

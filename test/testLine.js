@@ -1,6 +1,6 @@
-const Line = require("../src/line");
-const Point = require("../src/point");
 const assert = require("chai").assert;
+const { Line } = require("../src/line");
+const { Point } = require("../src/point");
 
 describe("Line", function() {
   describe("#toString", function() {
@@ -217,6 +217,23 @@ describe("Line", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 8, y: 8 });
       const actual = line.hasPoint(new Point(4, 2));
       assert.isNotOk(actual);
+    });
+  });
+
+  describe("#findPointFromStart", function() {
+    it("should give point at distance from start point", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 8, y: 1 });
+      const distance = 3;
+      const actual = line.findPointFromStart(distance);
+      const expected = new Point(4, 1);
+      assert.isOk(actual.isEqualTo(expected));
+    });
+
+    it("should give NaN if a distance is more than line length", function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 5, y: 1 });
+      const distance = 7;
+      const actual = line.findPointFromStart(distance);
+      assert.isNull(actual);
     });
   });
 });
