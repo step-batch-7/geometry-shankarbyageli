@@ -259,7 +259,6 @@ describe("Line", function() {
       const line = new Line({ x: 1, y: 1 }, { x: 8, y: 1 });
       const distance = 3;
       const actual = line.findPointFromEnd(distance);
-      console.log(actual);
       const expected = new Point(5, 1);
       assert.approximately(actual.x, expected.x, 0.0001);
       assert.approximately(actual.y, expected.y, 0.0001);
