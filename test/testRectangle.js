@@ -90,4 +90,24 @@ describe("Rectangle", function() {
       assert.isNotOk(rectangle.covers(point));
     });
   });
+
+  describe("#hasPoint", function() {
+    it("should validate if given point is on the edge of the rectangle", function() {
+      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
+      const point = new Point(6, 1);
+      assert.isOk(rectangle.hasPoint(point));
+    });
+
+    it("should invalidate if given point is outside the rectangle", function() {
+      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
+      const point = new Point(6, 0);
+      assert.isNotOk(rectangle.hasPoint(point));
+    });
+
+    it("should invalidate if given point is inside the rectangle", function() {
+      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
+      const point = new Point(3, 4);
+      assert.isNotOk(rectangle.hasPoint(point));
+    });
+  });
 });

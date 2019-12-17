@@ -1,47 +1,58 @@
 const Point = require("./point");
+const Line = require("./line");
 
 class Rectangle {
-  #pointB;
-  #pointD;
-  constructor(pointA, pointC) {
-    this.pointA = new Point(pointA.x, pointA.y);
-    this.pointC = new Point(pointC.x, pointC.y);
-    this.#pointB = new Point(pointA.y, pointC.x);
-    this.#pointD = new Point(pointA.x, pointC.y);
+  #vertexB;
+  #vertexD;
+  constructor(vertexA, vertexC) {
+    this.vertexA = new Point(vertexA.x, vertexA.y);
+    this.vertexC = new Point(vertexC.x, vertexC.y);
+    this.#vertexB = new Point(vertexC.x, vertexA.y);
+    this.#vertexD = new Point(vertexA.x, vertexC.y);
   }
 
   toString() {
-    const pointA = `${this.pointA.x},${this.pointA.y}`;
-    const pointC = `${this.pointC.x},${this.pointC.y}`;
-    return `[Rectangle (${pointA}) to (${pointC})]`;
+    const vertexA = `${this.vertexA.x},${this.vertexA.y}`;
+    const vertexC = `${this.vertexC.x},${this.vertexC.y}`;
+    return `[Rectangle (${vertexA}) to (${vertexC})]`;
   }
 
   get area() {
-    const length = this.pointA.x - this.pointC.x;
-    const width = this.pointA.y - this.pointC.y;
+    const length = this.vertexA.x - this.vertexC.x;
+    const width = this.vertexA.y - this.vertexC.y;
     return Math.abs(length * width);
   }
 
   get perimeter() {
-    const length = this.pointA.x - this.pointC.x;
-    const width = this.pointA.y - this.pointC.y;
+    const length = this.vertexA.x - this.vertexC.x;
+    const width = this.vertexA.y - this.vertexC.y;
     return 2 * (Math.abs(length) + Math.abs(width));
   }
 
   isEqualTo(other) {
     if (!(other instanceof Rectangle)) return false;
     return (
-      this.pointA.isEqualTo(other.pointA) && this.pointC.isEqualTo(other.pointC)
+      this.vertexA.isEqualTo(other.vertexA) &&
+      this.vertexC.isEqualTo(other.vertexC)
     );
+  }
+
+  hasPoint(point) {
+    if (!(point instanceof Point)) return false;
+    const AB = new Line(this.vertexA, this.#vertexB);
+    const BC = new Line(this.#vertexB, this.vertexC);
+    const CD = new Line(this.vertexC, this.#vertexD);
+    const AD = new Line(this.vertexA, this.#vertexD);
+    return point.isOn(AB) || point.isOn(BC) || point.isOn(CD) || point.isOn(AD);
   }
 
   covers(point) {
     if (!(point instanceof Point)) return false;
     return (
-      point.x <= this.pointA.x &&
-      point.x >= this.pointC.x &&
-      point.y <= this.pointA.y &&
-      point.y >= this.pointC.y
+      point.x <= this.vertexA.x &&
+      point.x >= this.vertexC.x &&
+      point.y <= this.vertexA.y &&
+      point.y >= this.vertexC.y
     );
   }
 }
