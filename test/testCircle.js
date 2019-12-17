@@ -103,4 +103,41 @@ describe("Circle", function() {
       assert.isOk(actual.isEqualTo(new Circle({ x: 5, y: 2 }, 6)));
     });
   });
+
+  describe("#covers", function() {
+    it("should validate if given point lies inside the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(0, 4);
+      const actual = circle.covers(point);
+      assert.isOk(actual);
+    });
+
+    it("should validate if given point lies on the circumference of circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(5, 0);
+      const actual = circle.covers(point);
+      assert.isOk(actual);
+    });
+
+    it("should validate if given point lies on the center of the circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(5, 0);
+      const actual = circle.covers(point);
+      assert.isOk(actual);
+    });
+
+    it("should invalidate if given point lies outside the circle", function() {
+      const circle = new Circle({ x: -4, y: 2 }, 5);
+      const point = new Point(-4, 8);
+      const actual = circle.covers(point);
+      assert.isNotOk(actual);
+    });
+
+    it("should invalidate if given point is not an instance of Point", function() {
+      const circle = new Circle({ x: -4, y: 2 }, 5);
+      const point = { x: -4, y: 4 };
+      const actual = circle.covers(point);
+      assert.isNotOk(actual);
+    });
+  });
 });
