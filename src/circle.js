@@ -34,4 +34,4 @@ class Circle {
   }
 }
 
-module.exports = { Circle };
+module.exports = Circle;
