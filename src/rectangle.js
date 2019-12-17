@@ -7,7 +7,15 @@ class Rectangle {
   }
 
   toString() {
-    return `[Rectangle (${this.topLeft.x},${this.topLeft.y}) to (${this.bottomRight.x},${this.bottomRight.y})]`;
+    const topLeft = `${this.topLeft.x},${this.topLeft.y}`;
+    const bottomRight = `${this.bottomRight.x},${this.bottomRight.y}`;
+    return `[Rectangle (${topLeft}) to (${bottomRight})]`;
+  }
+
+  get area() {
+    const length = this.topLeft.x - this.bottomRight.x;
+    const width = this.topLeft.y - this.bottomRight.y;
+    return Math.abs(length * width);
   }
 }
 

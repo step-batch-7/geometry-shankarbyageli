@@ -96,7 +96,7 @@ describe("Circle", function() {
       assert.isOk(actual.isEqualTo(new Circle({ x: 0, y: 0 }, 6)));
     });
 
-    it("should give same circle if given point is same as circles center", function() {
+    it("should give same circle if given point is same as circle's center", function() {
       const circle = new Circle({ x: 5, y: 2 }, 6);
       const point = { x: 5, y: 2 };
       const actual = circle.moveTo(point);
