@@ -116,12 +116,12 @@ describe("Circle", function() {
       const circle = new Circle({ x: 0, y: 0 }, 5);
       const point = new Point(5, 0);
       const actual = circle.covers(point);
-      assert.isOk(actual);
+      assert.isNotOk(actual);
     });
 
     it("should validate if given point lies on the center of the circle", function() {
       const circle = new Circle({ x: 0, y: 0 }, 5);
-      const point = new Point(5, 0);
+      const point = new Point(0, 0);
       const actual = circle.covers(point);
       assert.isOk(actual);
     });

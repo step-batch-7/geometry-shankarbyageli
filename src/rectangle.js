@@ -58,9 +58,7 @@ class Rectangle {
     if (!(point instanceof Point)) return false;
     const [xMin, xMax] = [this.vertexA.x, this.vertexC.x].sort((a, b) => a - b);
     const [yMin, yMax] = [this.vertexA.y, this.vertexC.y].sort((a, b) => a - b);
-    return (
-      point.x >= xMin && point.x <= xMax && point.y >= yMin && point.y <= yMax
-    );
+    return point.x > xMin && point.x < xMax && point.y > yMin && point.y < yMax;
   }
 }
 

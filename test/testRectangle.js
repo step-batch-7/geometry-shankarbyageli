@@ -81,7 +81,7 @@ describe("Rectangle", function() {
     it("should validate if given point lies on the side of rectangle", function() {
       const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
       const point = new Point(6, 1);
-      assert.isOk(rectangle.covers(point));
+      assert.isNotOk(rectangle.covers(point));
     });
 
     it("should invalidate if given point lies outside the rectangle", function() {

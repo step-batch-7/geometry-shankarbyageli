@@ -131,10 +131,10 @@ describe("Line", function() {
       assert.strictEqual(actual, -2);
     });
 
-    it("should give slope of vertical line as Infinfity", function() {
-      const line = new Line({ x: 3, y: 2 }, { x: 3, y: 5 });
+    it("should give slope of vertical line as Infinfity upwards", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 1, y: 1 });
       const actual = line.slope;
-      assert.strictEqual(actual, Infinity);
+      assert.strictEqual(actual, -Infinity);
     });
 
     it("should give slope of horizonal line as 0", function() {
