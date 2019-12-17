@@ -93,8 +93,8 @@ describe("Rectangle", function() {
 
   describe("#hasPoint", function() {
     it("should validate if given point is on the edge of the rectangle", function() {
-      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
-      const point = new Point(6, 1);
+      const rectangle = new Rectangle({ x: 8, y: 13 }, { x: 33, y: 5 });
+      const point = new Point(10, 13);
       assert.isOk(rectangle.hasPoint(point));
     });
 

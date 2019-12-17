@@ -1,6 +1,12 @@
 const Point = require("./point");
 const Line = require("./line");
 
+const getLengthAndWidth = function(vertexA, vertexC) {
+  const length = vertexA.x - vertexC.x;
+  const width = vertexA.y - vertexC.y;
+  return [length, width];
+};
+
 class Rectangle {
   #vertexB;
   #vertexD;
@@ -18,14 +24,12 @@ class Rectangle {
   }
 
   get area() {
-    const length = this.vertexA.x - this.vertexC.x;
-    const width = this.vertexA.y - this.vertexC.y;
+    const [length, width] = getLengthAndWidth(this.vertexA, this.vertexC);
     return Math.abs(length * width);
   }
 
   get perimeter() {
-    const length = this.vertexA.x - this.vertexC.x;
-    const width = this.vertexA.y - this.vertexC.y;
+    const [length, width] = getLengthAndWidth(this.vertexA, this.vertexC);
     return 2 * (Math.abs(length) + Math.abs(width));
   }
 
