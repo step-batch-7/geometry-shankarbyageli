@@ -23,4 +23,12 @@ describe("Rectangle", function() {
       assert.strictEqual(actual, 40);
     });
   });
+
+  describe("#perimeter", function() {
+    it("should give perimeter of rectangle", function() {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const actual = rectangle.perimeter;
+      assert.strictEqual(actual, 6);
+    });
+  });
 });
