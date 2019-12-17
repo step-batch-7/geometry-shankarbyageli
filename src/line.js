@@ -84,10 +84,8 @@ class Line {
     if (distance > this.length || distance < 0 || !Number.isInteger(distance))
       return null;
     const ratio = distance / this.length;
-    const [x, y] = [
-      (1 - ratio) * this.start.x + ratio * this.end.x,
-      (1 - ratio) * this.start.y + ratio * this.end.y
-    ];
+    const x = (1 - ratio) * this.start.x + ratio * this.end.x;
+    const y = (1 - ratio) * this.start.y + ratio * this.end.y;
     return new Point(x, y);
   }
 
