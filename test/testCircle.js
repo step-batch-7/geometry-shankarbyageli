@@ -87,4 +87,20 @@ describe("Circle", function() {
       assert.isNotOk(actual);
     });
   });
+
+  describe("#moveTo", function() {
+    it("should move circle to center given origin", function() {
+      const circle = new Circle({ x: 5, y: 2 }, 6);
+      const point = { x: 0, y: 0 };
+      const actual = circle.moveTo(point);
+      assert.isOk(actual.isEqualTo(new Circle({ x: 0, y: 0 }, 6)));
+    });
+
+    it("should give same circle if given point is same as circles center", function() {
+      const circle = new Circle({ x: 5, y: 2 }, 6);
+      const point = { x: 5, y: 2 };
+      const actual = circle.moveTo(point);
+      assert.isOk(actual.isEqualTo(new Circle({ x: 5, y: 2 }, 6)));
+    });
+  });
 });
