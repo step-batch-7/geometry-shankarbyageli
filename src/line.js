@@ -16,6 +16,10 @@ class Line {
   constructor(start, end) {
     this.start = new Point(start.x, start.y);
     this.end = new Point(end.x, end.y);
+    Object.defineProperties(this, {
+      start: { writable: false },
+      end: { writable: false }
+    });
   }
 
   toString() {

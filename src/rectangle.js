@@ -8,13 +8,17 @@ const getLengthAndWidth = function(vertexA, vertexC) {
 };
 
 class Rectangle {
-  #vertexB;
-  #vertexD;
   constructor(vertexA, vertexC) {
     this.vertexA = new Point(vertexA.x, vertexA.y);
     this.vertexC = new Point(vertexC.x, vertexC.y);
-    this.#vertexB = new Point(vertexC.x, vertexA.y);
-    this.#vertexD = new Point(vertexA.x, vertexC.y);
+    this.vertexB = new Point(vertexC.x, vertexA.y);
+    this.vertexD = new Point(vertexA.x, vertexC.y);
+    Object.defineProperties(this, {
+      vertexA: { writable: false },
+      vertexB: { writable: false },
+      vertexC: { writable: false },
+      vertexD: { writable: false }
+    });
   }
 
   toString() {
@@ -43,10 +47,10 @@ class Rectangle {
 
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
-    const AB = new Line(this.vertexA, this.#vertexB);
-    const BC = new Line(this.#vertexB, this.vertexC);
-    const CD = new Line(this.vertexC, this.#vertexD);
-    const AD = new Line(this.vertexA, this.#vertexD);
+    const AB = new Line(this.vertexA, this.vertexB);
+    const BC = new Line(this.vertexB, this.vertexC);
+    const CD = new Line(this.vertexC, this.vertexD);
+    const AD = new Line(this.vertexA, this.vertexD);
     return point.isOn(AB) || point.isOn(BC) || point.isOn(CD) || point.isOn(AD);
   }
 

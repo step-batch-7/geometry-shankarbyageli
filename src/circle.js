@@ -4,6 +4,10 @@ class Circle {
   constructor(center, radius) {
     this.center = new Point(center.x, center.y);
     this.radius = radius;
+    Object.defineProperties(this, {
+      center: { writable: false },
+      radius: { writable: false }
+    });
   }
 
   toString() {
