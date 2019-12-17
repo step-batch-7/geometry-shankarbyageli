@@ -73,7 +73,7 @@ describe("Rectangle", function() {
 
   describe("#covers", function() {
     it("should validate if given point lies inside the rectangle", function() {
-      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 6, y: 6 });
       const point = new Point(3, 3);
       assert.isOk(rectangle.covers(point));
     });

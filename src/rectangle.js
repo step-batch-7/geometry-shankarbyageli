@@ -48,11 +48,10 @@ class Rectangle {
 
   covers(point) {
     if (!(point instanceof Point)) return false;
+    const [xMin, xMax] = [this.vertexA.x, this.vertexC.x].sort();
+    const [yMin, yMax] = [this.vertexA.y, this.vertexC.y].sort();
     return (
-      point.x <= this.vertexA.x &&
-      point.x >= this.vertexC.x &&
-      point.y <= this.vertexA.y &&
-      point.y >= this.vertexC.y
+      point.x >= xMin && point.x <= xMax && point.y >= yMin && point.y <= yMax
     );
   }
 }
