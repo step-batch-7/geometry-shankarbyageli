@@ -1,7 +1,7 @@
 const assert = require("chai").assert;
-const { Point } = require("../src/point");
-const { Line } = require("../src/line");
-const { Circle } = require("../src/circle");
+const Point = require("../src/point");
+const Line = require("../src/line");
+const Circle = require("../src/circle");
 
 describe("Point", function() {
   describe("#toString", function() {
