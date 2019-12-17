@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const Rectangle = require("../src/rectangle");
+const Point = require("../src/point");
 
 describe("Rectangle", function() {
   describe("#toString", function() {
@@ -67,6 +68,26 @@ describe("Rectangle", function() {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
       const other = new Rectangle({ x: 2, y: 3 }, { x: 1, y: 1 });
       assert.isNotOk(rectangle.isEqualTo(other));
+    });
+  });
+
+  describe("#covers", function() {
+    it("should validate if given point lies inside the rectangle", function() {
+      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
+      const point = new Point(3, 3);
+      assert.isOk(rectangle.covers(point));
+    });
+
+    it("should validate if given point lies on the side of rectangle", function() {
+      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
+      const point = new Point(6, 1);
+      assert.isOk(rectangle.covers(point));
+    });
+
+    it("should invalidate if given point lies outside the rectangle", function() {
+      const rectangle = new Rectangle({ x: 6, y: 6 }, { x: 1, y: 1 });
+      const point = new Point(3, 0);
+      assert.isNotOk(rectangle.covers(point));
     });
   });
 });
