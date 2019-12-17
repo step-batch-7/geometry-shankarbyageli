@@ -23,6 +23,14 @@ class Rectangle {
     const width = this.topLeft.y - this.bottomRight.y;
     return 2 * (Math.abs(length) + Math.abs(width));
   }
+
+  isEqualTo(other) {
+    if (!(other instanceof Rectangle)) return false;
+    return (
+      this.topLeft.isEqualTo(other.topLeft) &&
+      this.bottomRight.isEqualTo(other.bottomRight)
+    );
+  }
 }
 
 module.exports = Rectangle;
