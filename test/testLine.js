@@ -165,7 +165,7 @@ describe("Line", function() {
   });
 
   describe("#findY", function() {
-    it("should give X coordinate of given Y of horizontal line", function() {
+    it("should give X coordinate of given Y of vertical line", function() {
       const line = new Line({ x: 4, y: 6 }, { x: 4, y: 2 });
       const actual = line.findY(4);
       assert.strictEqual(actual, 6);
@@ -177,9 +177,9 @@ describe("Line", function() {
       assert.isNaN(actual);
     });
 
-    it("should give X coordinate of given Y of vertical line", function() {
-      const line = new Line({ x: 3, y: 1 }, { x: 3, y: 8 });
-      const actual = line.findY(1);
+    it("should give X coordinate of given Y of horizontal line", function() {
+      const line = new Line({ x: 1, y: 8 }, { x: 3, y: 8 });
+      const actual = line.findY(0);
       assert.isNaN(actual);
     });
   });

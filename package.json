@@ -22,5 +22,9 @@
   "homepage": "https://github.com/step-batch-7/geometry-shankarbyageli#readme",
   "dependencies": {
     "chai": "^4.2.0"
+  },
+  "devDependencies": {
+    "mocha-simple-html-reporter": "^1.1.0",
+    "mochawesome": "^5.0.0"
   }
 }

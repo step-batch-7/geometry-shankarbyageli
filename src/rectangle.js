@@ -1,6 +1,8 @@
 const Point = require("./point");
 const Line = require("./line");
 
+console.log(__dirname, __filename);
+
 const getLengthAndWidth = function(vertexA, vertexC) {
   const length = vertexA.x - vertexC.x;
   const width = vertexA.y - vertexC.y;
